@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mutual Fund NAV Predictor</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f1ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 500px;
+            margin: 80px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        h1 {
+            color: #5b3fa3;
+        }
+
+        .description {
+            color: #666;
+        }
+
+        label {
+            display: block;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: #6c4cc4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #54389c;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #eee8ff;
+            border-radius: 10px;
+        }
+
+        .result h2 {
+            color: #5b3fa3;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Mutual Fund NAV Predictor</h1>
+
+        <p class="description">
+            Predict the NAV using our Machine Learning model.
+        </p>
+
+        <form action="/predict" method="POST">
+
+            <label for="date">
+                Select Prediction Date
+            </label>
+
+            <input
+                type="date"
+                id="date"
+                name="date"
+                required
+            >
+
+            <button type="submit">
+                Predict NAV
+            </button>
+
+        </form>
+
+
+        {% if prediction %}
+
+        <div class="result">
+
+            <h2>Predicted NAV</h2>
+
+            <h1>₹ {{ prediction }}</h1>
+
+            <p>
+                Date: {{ selected_date }}
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
